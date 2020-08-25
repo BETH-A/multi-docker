@@ -1,0 +1,24 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker built -t barnoldcoding/react-test -f ./client/Dockerfile.dev ./client
+
+scripts:
+    - docker run barnoldcoding/react-test npm test -- --coverage
+
+after_success:
+    - docker build -t barnoldcoding/multi-client ./client
+    - docker built -t barnoldcoding/multi-nginx ./nginx
+    - docker build -t barnoldcoding/multi-server ./server
+    - docker build -t barnoldcoding/multi-worker ./worker
+
+    # Log in to the docker CLI
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+    #Take those images & push them to docker hub
+    - docker push barnoldcoding/multi-client
+    - docker push barnoldcoding/multi-nginx
+    - docker push barnoldcoding/multi-server
+    - docker push barnoldcoding/multi-worker
