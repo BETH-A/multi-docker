@@ -11,7 +11,7 @@ scripts:
 
 after_success:
     - docker build -t barnoldcoding/multi-client ./client
-    - docker built -t barnoldcoding/multi-nginx ./nginx
+    - docker build -t barnoldcoding/multi-nginx ./nginx
     - docker build -t barnoldcoding/multi-server ./server
     - docker build -t barnoldcoding/multi-worker ./worker
 
