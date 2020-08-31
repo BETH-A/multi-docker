@@ -23,3 +23,16 @@ after_success:
     - docker push barnoldcoding/multi-nginx
     - docker push barnoldcoding/multi-server
     - docker push barnoldcoding/multi-worker
+
+    deploy:
+        provider: elasticbeanstalk
+        region: us-east-2
+        app: multi-docker
+        env: MultiDocker-env
+        bucket_name: elasticbeanstalk-us-east-2-356583478594
+        bucket_path: docker-multi
+        on:
+            branch: master
+        access_key_id: $AWS_ACCESS_KEY
+        secret_access_key:
+            secure: $AWS_SECRET_KEY
