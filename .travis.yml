@@ -14,10 +14,8 @@ after_success:
     - docker build -t barnoldcoding/multi-nginx ./nginx
     - docker build -t barnoldcoding/multi-server ./server
     - docker build -t barnoldcoding/multi-worker ./worker
-
     # Log in to the docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-
     #Take those images & push them to docker hub
     - docker push barnoldcoding/multi-client
     - docker push barnoldcoding/multi-nginx
@@ -37,4 +35,3 @@ after_success:
         access_key_id: $AWS_ACCESS_KEY
         secret_access_key:
             secure: $AWS_SECRET_KEY
-            
