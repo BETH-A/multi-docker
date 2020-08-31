@@ -8,7 +8,7 @@
             "essential": false
         },
         {
-            "name": "server",
+            "name": "api",
             "image": "barnoldcoding/multi-server",
             "hostname": "api",
             "essential": false
