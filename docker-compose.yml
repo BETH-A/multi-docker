@@ -8,7 +8,6 @@ services:
         image: 'redis:latest'
     api:
         build: 
-            # file name to use
             dockerfile: Dockerfile.dev
             # which directory to find the above file in
             context: ./server
