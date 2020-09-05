@@ -5,19 +5,22 @@
             "name": "client",
             "image": "barnoldcoding/multi-client",
             "hostname": "client",
-            "essential": false
+            "essential": false,
+            "memeory": 128
         },
         {
             "name": "api",
             "image": "barnoldcoding/multi-server",
             "hostname": "api",
-            "essential": false
+            "essential": false,
+            "memory": 128
         },
         {
             "name": "worker",
             "image": "barnoldcoding/multi-worker",
             "hostname": "worker",
-            "essential": false
+            "essential": false,
+            "memory": 128
         },
         {
             "name": "nginx",
@@ -29,7 +32,8 @@
                     "containerPort": 80
                 }
             ],
-            "links": ["client", "server"]
+            "links": ["client", "server"],
+            "memory": 128
         }
     ]
 }
